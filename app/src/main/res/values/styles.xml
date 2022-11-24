@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Myslider" parent="@style/Widget.MaterialComponents.Tooltip">
+        <item name="labelStyle">@style/My_Tooltip</item>
+        <item name ="backgroundTint">@color/purple_100</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Slider</item>
+    </style>
+
+    <style name="My_Tooltip" parent="Widget.Material3.Slider">
+        <!-- background color of the Tooltip -->
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.Slider" parent="">
+        <!-- color used by the text in the Tooltip -->
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
+</resources>

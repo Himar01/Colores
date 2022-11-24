@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Colores</string>
+    <string name="texto">R: %1$.0f G: %2$.0f B: %3$.0f</string>
+</resources>
