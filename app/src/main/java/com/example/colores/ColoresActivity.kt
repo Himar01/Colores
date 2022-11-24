@@ -1,10 +1,12 @@
 package com.example.colores
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.colores.databinding.ActivityColoresBinding
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
@@ -26,8 +28,10 @@ class ColoresActivity : AppCompatActivity() {
     private lateinit var gSlider: Slider
     private lateinit var bSlider: Slider
 
+    private var topScore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
         binding = ActivityColoresBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,6 +45,9 @@ class ColoresActivity : AppCompatActivity() {
         val bDiff = bGuess - bTarget
         var diff = sqrt((rDiff*rDiff+gDiff*gDiff+bDiff*bDiff).toDouble()/3).toInt()
         diff = (100-diff)
+        if(diff>topScore){
+            topScore = diff
+        }
         Toast.makeText(applicationContext, "Tu resultado es ${diff}",Toast.LENGTH_SHORT).show()
     }
 
@@ -51,8 +58,6 @@ class ColoresActivity : AppCompatActivity() {
 
         binding.targetColor.setBackgroundColor(Color.rgb(rTarget.toInt(),gTarget.toInt()
             ,bTarget.toInt()))
-
-
     }
 
     private fun prepareActuators() {
@@ -104,8 +109,18 @@ class ColoresActivity : AppCompatActivity() {
             checkResults()
             setTargetcolor()
         }
+        binding.topButton.setOnClickListener(){
+            _->
+            topButtonPressed()
+        }
 
 
 
+    }
+
+    private fun topButtonPressed() {
+        var topIntent = Intent(this, TopActivity::class.java)
+        topIntent.putExtra("score",topScore)
+        startActivity(topIntent)
     }
 }

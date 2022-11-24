@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/layout/activity_colores.xml" value="0.1" />
+        <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/drawable/ic_king.xml" value="0.255" />
+        <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/drawable/people.xml" value="0.255" />
+        <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/layout/activity_colores.xml" value="0.33" />
         <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/himar/AndroidStudioProjects/Colores/app/src/main/res/layout/activity_top.xml" value="0.253125" />
       </map>
     </option>
   </component>
