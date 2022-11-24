@@ -4,15 +4,16 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.colores.databinding.ActivityColoresBinding
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
+import java.lang.Math.sqrt
 import kotlin.random.Random
 
 class ColoresActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityColoresBinding
-
     private var rTarget: Float = 0F
     private var gTarget: Float = 0F
     private var bTarget: Float = 0F
@@ -34,13 +35,23 @@ class ColoresActivity : AppCompatActivity() {
         prepareActuators()
     }
 
+    private fun checkResults() {
+        val rDiff = rGuess - rTarget
+        val gDiff = gGuess - gTarget
+        val bDiff = bGuess - bTarget
+        var diff = sqrt((rDiff*rDiff+gDiff*gDiff+bDiff*bDiff).toDouble()/3).toInt()
+        diff = (100-diff)
+        Toast.makeText(applicationContext, "Tu resultado es ${diff}",Toast.LENGTH_SHORT).show()
+    }
+
     private fun setTargetcolor() {
-        rTarget = Random.nextFloat()*255
-        gTarget = Random.nextFloat()*255
-        bTarget = Random.nextFloat()*255
+        rTarget = Random(System.nanoTime()).nextFloat()*255
+        gTarget = Random(System.nanoTime()).nextFloat()*255
+        bTarget = Random(System.nanoTime()).nextFloat()*255
+
         binding.targetColor.setBackgroundColor(Color.rgb(rTarget.toInt(),gTarget.toInt()
             ,bTarget.toInt()))
-        binding.targetText.text = resources.getString(R.string.texto,rTarget,gTarget,bTarget)
+
 
     }
 
@@ -90,6 +101,7 @@ class ColoresActivity : AppCompatActivity() {
 
         binding.HitMe.setOnClickListener(){
             _->
+            checkResults()
             setTargetcolor()
         }
 

@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="R: 255 G: 255 B: 255"
+        android:text="Match this color!"
         android:gravity="center_horizontal"
         />
 
